@@ -105,7 +105,13 @@ datasets:
                begin: 2007-01-01
                end: null  # or empty
        provider:
-           name: GeoPackage
-           data: /data/prtr_emissions.gpkg
-           id_field: fid
+           name: PostgreSQL
+           data:
+               host: postgres
+               dbname: gis
+               user: docker
+               password: docker
+               port: 5432
+           id_field: ogc_fid
            table: prtr_emissions
+           geom_field: wkb_geometry
