@@ -1,0 +1,4 @@
+-e git+https://github.com/HTenkanen/geopandas#egg=geopandas
+SQLAlchemy
+psycopg2-binary
+geoalchemy2
