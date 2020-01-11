@@ -112,9 +112,9 @@ datasets:
                user: docker
                password: docker
                port: 5432
-           id_field: ogc_fid
+           id_field: id
            table: prtr_emissions
-           geom_field: wkb_geometry
+           geom_field: geometry
 
    landkreise:
        title: German Landkreise

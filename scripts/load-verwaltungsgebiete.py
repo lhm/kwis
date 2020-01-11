@@ -1,9 +1,6 @@
 from datapackage import Package
 import geopandas
 from sqlalchemy import create_engine
-from pathlib import Path
-
-root = Path(__file__).parents[1]
 
 package = Package('https://raw.githubusercontent.com/lhm/verwaltungsgebiete/master/datapackage.json')
 resource = package.get_resource('vg250-districts')
