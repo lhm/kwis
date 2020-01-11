@@ -145,5 +145,5 @@ datasets:
                password: docker
                port: 5432
            id_field: AGS_0
-           table: vg250_krs
+           table: vg250_districts
            geom_field: geometry
