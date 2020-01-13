@@ -3,3 +3,6 @@ SQLAlchemy
 psycopg2-binary
 geoalchemy2
 datapackage
+intake
+intake-parquet
+intake_geopandas
