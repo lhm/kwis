@@ -3,6 +3,7 @@ import pandas as pd
 import geopandas
 from sqlalchemy import create_engine
 import click
+import os
 
 class Loader:
     source_name = None
@@ -43,12 +44,13 @@ loaders = {
 @click.command()
 @click.argument('source')
 @click.option('--catalog', default='catalog.yml', help='Path to catalog yml')
-@click.option(
-    '--db_uri',
-    default='postgresql+psycopg2://docker:docker@localhost:5432/gis',
-    help='Database URI'
-)
+@click.option('--db_uri', help='Database URI')
 def cli(source, catalog, db_uri):
+    if db_uri is None:
+        db_uri = os.environ.get(
+            'DB_URI', 'postgresql+psycopg2://docker:docker@localhost:5432/gis'
+        )
+
     loader_name = loaders[source]
     loader_class = globals()[loader_name]
     loader = loader_class(catalog, db_uri)

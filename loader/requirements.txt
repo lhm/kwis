@@ -1,3 +1,4 @@
+# using code from https://github.com/geopandas/geopandas/pull/1248
 -e git+https://github.com/HTenkanen/geopandas#egg=geopandas
 SQLAlchemy
 psycopg2-binary
