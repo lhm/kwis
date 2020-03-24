@@ -1,7 +1,7 @@
 from prefect import task, Flow
 import intake
-import geopandas
 from pathlib import Path
+from transformers import DistrictsTransformer
 
 loader_dir = Path(__file__).parent.resolve()
 root = loader_dir.parent
@@ -21,9 +21,7 @@ def read_dataset():
 
 @task
 def transform(dataset):
-    # Regions that have sea territories have two entries. For now,
-    # select only land area in order to get unique records.
-    dataset = dataset[dataset.GF == 4]
+    dataset = DistrictsTransformer.transform(dataset)
     return dataset
 
 
@@ -38,7 +36,6 @@ def main():
     with Flow("etl") as flow:
         source_data = read_dataset()
         transformed = transform(source_data)
-        write_package(transformed)
 
     flow.run()
 
