@@ -8,3 +8,4 @@ intake
 intake-parquet
 intake_geopandas
 click
+prefect
