@@ -1,175 +1,148 @@
-# =================================================================
-#
-# Authors: Just van den Broecke <justb4@gmail.com>
-#
-# Copyright (c) 2019 Just van den Broecke
-#
-# Permission is hereby granted, free of charge, to any person
-# obtaining a copy of this software and associated documentation
-# files (the "Software"), to deal in the Software without
-# restriction, including without limitation the rights to use,
-# copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the
-# Software is furnished to do so, subject to the following
-# conditions:
-#
-# The above copyright notice and this permission notice shall be
-# included in all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-# OTHER DEALINGS IN THE SOFTWARE.
-#
-# =================================================================
-
-
 # Default config for base Docker Image, override via DockerVolume
 # mapping with your own config.
 server:
-    bind:
-        host: 0.0.0.0
-        port: 80
-    url: http://localhost:5000
-    mimetype: application/json; charset=UTF-8
-    encoding: utf-8
-    language: en-US
-    cors: true
-    pretty_print: true
-    limit: 10
-    # templates: /path/to/templates
-    map:
-        url: https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png
-        attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia maps</a> | Map data &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+  bind:
+    host: 0.0.0.0
+    port: 80
+  url: http://localhost:5000
+  mimetype: application/json; charset=UTF-8
+  encoding: utf-8
+  language: en-US
+  cors: true
+  pretty_print: true
+  limit: 10
+  # templates: /path/to/templates
+  map:
+    url: https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png
+    attribution: <a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia
+      maps</a> | Map data &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap
+      contributors</a>
 
 logging:
-    level: ERROR
-    #logfile: /tmp/pygeoapi.log
+  level: ERROR
+  #logfile: /tmp/pygeoapi.log
 
 metadata:
-    identification:
-        title: pygeoapi Demo instance - running latest GitHub version
-        description: pygeoapi provides an API to geospatial data
-        keywords:
-            - geospatial
-            - data
-            - api
-        keywords_type: theme
-        terms_of_service: None
-        url: https://github.com/geopython/pygeoapi
-    license:
-        name: CC-BY 4.0 license
-        url: https://creativecommons.org/licenses/by/4.0/
-    provider:
-        name: pygeoapi Development Team
-        url: https://pygeoapi.io
-    contact:
-        name: Kralidis, Tom
-        position: Lead Dev
-        address: Mailing Address
-        city: City
-        stateorprovince: Administrative Area
-        postalcode: Zip or Postal Code
-        country: Canada
-        phone: +xx-xxx-xxx-xxxx
-        fax: +xx-xxx-xxx-xxxx
-        email: you@example.org
-        url: Contact URL
-        hours: Hours of Service
-        instructions: During hours of service.  Off on weekends.
-        role: pointOfContact
+  identification:
+    title: pygeoapi Demo instance - running latest GitHub version
+    description: pygeoapi provides an API to geospatial data
+    keywords:
+    - geospatial
+    - data
+    - api
+    keywords_type: theme
+    terms_of_service: None
+    url: https://github.com/geopython/pygeoapi
+  license:
+    name: CC-BY 4.0 license
+    url: https://creativecommons.org/licenses/by/4.0/
+  provider:
+    name: pygeoapi Development Team
+    url: https://pygeoapi.io
+  contact:
+    name: Kralidis, Tom
+    position: Lead Dev
+    address: Mailing Address
+    city: City
+    stateorprovince: Administrative Area
+    postalcode: Zip or Postal Code
+    country: Canada
+    phone: +xx-xxx-xxx-xxxx
+    fax: +xx-xxx-xxx-xxxx
+    email: you@example.org
+    url: Contact URL
+    hours: Hours of Service
+    instructions: During hours of service.  Off on weekends.
+    role: pointOfContact
 
 datasets:
-   prtr:
-       title: German PRTR
-       description: Germany pollutants register data
-       keywords:
-           - Germany
-           - PRTR
-           - Emissions
-       links:
-           - type: text/html
-             rel: canonical
-             title: information
-             href: https://www.thru.de/index.php?id=421&L=3
-             hreflang: en-US
-       extents:
-           spatial:
-               bbox: [-180, -90, 180, 90]
-               crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-           temporal:
-               begin: 2007-01-01
-               end: null  # or empty
-       provider:
-           name: PostgreSQL
-           data:
-               host: postgres
-               dbname: gis
-               user: docker
-               password: docker
-               port: 5432
-           id_field: id
-           table: prtr_emissions
-           geom_field: geometry
 
-   prtr-gpkg:
-       title: German PRTR (GPKG)
-       description: Germany pollutants register data
-       keywords:
-           - Germany
-           - PRTR
-           - Emissions
-       links:
-           - type: text/html
-             rel: canonical
-             title: information
-             href: https://www.thru.de/index.php?id=421&L=3
-             hreflang: en-US
-       extents:
-           spatial:
-               bbox: [-180, -90, 180, 90]
-               crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-           temporal:
-               begin: 2007-01-01
-               end: null  # or empty
-       provider:
-           name: SQLiteGPKG
-           data: /data/prtr_emissions.gpkg
-           id_field: fid
-           table: prtr_emissions
+  prtr:
+    title: German PRTR
+    description: Germany pollutants register data
+    keywords:
+    - Germany
+    - PRTR
+    - Emissions
+    links:
+    - type: text/html
+      rel: canonical
+      title: information
+      href: https://www.thru.de/index.php?id=421&L=3
+      hreflang: en-US
+    extents:
+      spatial:
+        bbox: [-180, -90, 180, 90]
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      temporal:
+        begin: 2007-01-01
+        end: null # or empty
+    provider:
+      name: PostgreSQL
+      data:
+        host: postgres
+        dbname: gis
+        user: docker
+        password: docker
+        port: 5432
+      id_field: id
+      table: prtr_emissions
+      geom_field: geometry
 
-   landkreise:
-       title: German Landkreise
-       description: Administrative boundaries
-       keywords:
-           - Germany
-           - Administrative
-           - Boundaries
-       links:
-           - type: text/html
-             rel: canonical
-             title: information
-             href: https://gdz.bkg.bund.de/index.php/default/digitale-geodaten/verwaltungsgebiete/verwaltungsgebiete-1-250-000-ebenen-stand-01-01-vg250-ebenen-01-01.html
-             hreflang: de-DE
-       extents:
-           spatial:
-               bbox: [-180, -90, 180, 90]
-               crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-           temporal:
-               begin: 2007-01-01
-               end: null  # or empty
-       provider:
-           name: PostgreSQL
-           data:
-               host: postgres
-               dbname: gis
-               user: docker
-               password: docker
-               port: 5432
-           id_field: AGS_0
-           table: vg250_districts
-           geom_field: geometry
+  prtr-gpkg:
+    title: German PRTR (GPKG)
+    description: Germany pollutants register data
+    keywords:
+    - Germany
+    - PRTR
+    - Emissions
+    links:
+    - type: text/html
+      rel: canonical
+      title: information
+      href: https://www.thru.de/index.php?id=421&L=3
+      hreflang: en-US
+    extents:
+      spatial:
+        bbox: [-180, -90, 180, 90]
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      temporal:
+        begin: 2007-01-01
+        end: null # or empty
+    provider:
+      name: SQLiteGPKG
+      data: /data/prtr_emissions.gpkg
+      id_field: fid
+      table: prtr_emissions
+
+  landkreise:
+    title: German Landkreise
+    description: Administrative boundaries
+    keywords:
+    - Germany
+    - Administrative
+    - Boundaries
+    links:
+    - type: text/html
+      rel: canonical
+      title: information
+      href: https://gdz.bkg.bund.de/index.php/default/digitale-geodaten/verwaltungsgebiete/verwaltungsgebiete-1-250-000-ebenen-stand-01-01-vg250-ebenen-01-01.html
+      hreflang: de-DE
+    extents:
+      spatial:
+        bbox: [-180, -90, 180, 90]
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      temporal:
+        begin: 2007-01-01
+        end: null # or empty
+    provider:
+      name: PostgreSQL
+      data:
+        host: postgres
+        dbname: gis
+        user: docker
+        password: docker
+        port: 5432
+      id_field: AGS_0
+      table: vg250_districts
+      geom_field: geometry
