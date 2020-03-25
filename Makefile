@@ -4,6 +4,9 @@ venv: scripts/requirements.txt
 	./venv/bin/pip install -Ur scripts/requirements.txt
 	touch venv
 
+data/districts.gpkg: venv
+	./venv/bin/python scripts/load-districts.py
+
 clean:
 	rm -rf data/*.gpkg
 
