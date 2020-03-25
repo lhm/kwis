@@ -4,10 +4,13 @@ venv: scripts/requirements.txt
 	./venv/bin/pip install -Ur scripts/requirements.txt
 	touch venv
 
-data/districts.gpkg: venv
+data:
+	mkdir ./data
+
+data/districts.gpkg: venv data
 	./venv/bin/python scripts/load-districts.py
 
-data/prtr_emissions.gpkg: venv
+data/prtr_emissions.gpkg: venv data
 	./venv/bin/python scripts/load-emissions.py
 
 clean:
