@@ -7,6 +7,9 @@ venv: scripts/requirements.txt
 data/districts.gpkg: venv
 	./venv/bin/python scripts/load-districts.py
 
+data/prtr_emissions.gpkg: venv
+	./venv/bin/python scripts/load-emissions.py
+
 clean:
 	rm -rf data/*.gpkg
 

@@ -69,3 +69,29 @@ datasets:
       data: /data/districts.gpkg
       id_field: fid
       table: districts
+
+  prtr_emissions:
+    title: German PRTR Emissions
+    description: German Emissions from the PRTR Register
+    keywords:
+    - Germany
+    - Emissions
+    - PRTR
+    links:
+    - type: text/html
+      rel: canonical
+      title: information
+      href: https://www.thru.de/
+      hreflang: de-DE
+    extents:
+      spatial:
+        bbox: [-180, -90, 180, 90]
+        crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+      temporal:
+        begin: 2007-01-01
+        end: 2017-12-31
+    provider:
+      name: SQLiteGPKG
+      data: /data/prtr_emissions.gpkg
+      id_field: fid
+      table: prtr_emissions

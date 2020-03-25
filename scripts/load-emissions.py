@@ -1,14 +1,18 @@
-from datapackage import Package
+from pandas_datapackage_reader import read_datapackage
 import geopandas
-from sqlalchemy import create_engine
 import pandas as pd
+from utils import data_dir, root
 
-package = Package('https://datahub.io/lhm/german-prtr-emissions/datapackage.json')
-resource = package.get_resource('prtr-emissions-geojson')
+df = read_datapackage(
+    "https://github.com/lhm/schadstoffregister", resource_name="prtr-emissions"
+)
 
-df = geopandas.read_file(resource.source)
+gdf = geopandas.GeoDataFrame(
+    df, geometry=geopandas.points_from_xy(df.geo_long_wgs84, df.geo_lat_wgs84)
+)
+
 # Remove entries without geometry
-df = df[pd.notnull(df.geometry)]
+gdf = gdf[pd.notnull(gdf.geometry)]
 
-engine = create_engine('postgresql+psycopg2://docker:docker@localhost:5432/gis')
-df.to_postgis(con=engine, name='prtr_emissions', if_exists='replace', index=True, index_label='id')
+output_path = data_dir / "prtr_emissions.gpkg"
+gdf.to_file(output_path, layer="prtr_emissions", driver="GPKG")
