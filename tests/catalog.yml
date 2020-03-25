@@ -1,0 +1,8 @@
+metadata:
+  version: 1
+sources:
+  dataset:
+    description: Test Dataset
+    driver: csv
+    args:
+      urlpath: '{{ CATALOG_DIR}}/test_dataset.csv'
